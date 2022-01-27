@@ -1,26 +1,32 @@
 package com.dailysheets.dailysheets.model;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "classrooms")
 public class ClassroomModel {
 
     @Id
-    @Column
+    @Column(name = "classroom_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column
+    @Column(name = "classroom_name")
     private String name;
 
-    @Column
+    @Column(name = "classroom_age")
     private String ageGroup;
 
-    public ClassroomModel(Long id, String name, String ageGroup) {
-        this.id = id;
-        this.name= name;
-        this.ageGroup = ageGroup;
+    @OneToMany(mappedBy = "classrooms", orphanRemoval = false)
+    @LazyCollection(LazyCollectionOption.FALSE)
+    private List<StudentModel> studentList;
+
+    public ClassroomModel() {
+
     }
 
     public Long getId() {
@@ -45,5 +51,13 @@ public class ClassroomModel {
 
     public void setAgeGroup(String ageGroup) {
         this.ageGroup = ageGroup;
+    }
+
+    public List<StudentModel> getStudentList() {
+        return studentList;
+    }
+
+    public void setStudentList(List<StudentModel> studentList) {
+        this.studentList = studentList;
     }
 }
