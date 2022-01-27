@@ -17,4 +17,12 @@ public class ClassroomService {
         this.classroomRepository = classroomRepository;
     }
 
+    // GET all classrooms
+
+    // POST create a classroom
+
+    // PUT update a classroom
+
+    // DEL delete a classroom
+
 }

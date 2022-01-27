@@ -22,4 +22,13 @@ public class ClassroomController {
         this.classroomService = classroomService;
     }
 
+
+    // GET all classrooms
+
+    // POST create a classroom
+
+    // PUT update a classroom
+
+    // DEL delete a classroom
+
 }

@@ -17,4 +17,11 @@ public class DailySheetService {
         this.dailySheetRepository = dailySheetRepository;
     }
 
+
+    // GET a single daily sheet
+
+    // POST create a daily sheet
+
+    // PUT update a daily sheet
+
 }

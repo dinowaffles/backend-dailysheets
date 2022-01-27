@@ -22,4 +22,12 @@ public class StudentController {
         this.studentService = studentService;
     }
 
+    // GET all students
+
+    // POST create a student
+
+    // PUT update a student
+
+    // DEL delete a student
+
 }

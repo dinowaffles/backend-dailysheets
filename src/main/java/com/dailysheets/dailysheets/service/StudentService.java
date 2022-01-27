@@ -17,4 +17,12 @@ public class StudentService {
         this.studentRepository = studentRepository;
     }
 
+    // GET all students
+
+    // POST create a student
+
+    // PUT update a student
+
+    // DEL delete a student
+
 }
