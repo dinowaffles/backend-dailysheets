@@ -2,11 +2,14 @@ package com.dailysheets.dailysheets.model;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
-@Table(name = "students")
+@Table(name = "student")
 public class StudentModel {
 
     @Id
@@ -21,6 +24,10 @@ public class StudentModel {
     @ManyToOne
     @JoinColumn(name = "category_id")
     private ClassroomModel classroomModel;
+
+    @OneToMany(mappedBy = "student", orphanRemoval = false)
+    @LazyCollection(LazyCollectionOption.FALSE)
+    private List<DailySheetModel> dailySheetModelList;
 
     public StudentModel() {
     }
