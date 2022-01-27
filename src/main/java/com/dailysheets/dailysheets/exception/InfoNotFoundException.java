@@ -1,4 +1,11 @@
 package com.dailysheets.dailysheets.exception;
 
-public class InfoNotFoundException {
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.ResponseStatus;
+
+@ResponseStatus(HttpStatus.NOT_FOUND)
+public class InfoNotFoundException extends RuntimeException {
+    public InfoNotFoundException(String message) {
+        super(message);
+    }
 }
