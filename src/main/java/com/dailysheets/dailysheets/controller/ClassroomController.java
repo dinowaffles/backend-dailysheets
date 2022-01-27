@@ -48,7 +48,7 @@ public class ClassroomController {
 
     // DEL delete a classroom
     @DeleteMapping("/classroom/{classroomId}")
-    public ResponseEntity<Map<String, Boolean>>  deleteClassroom(@PathVariable Long classroomId) {
+    public ResponseEntity<Map<String, Boolean>> deleteClassroom(@PathVariable Long classroomId) {
         LOGGER.info("controller calling deleteClassroom");
         return classroomService.deleteClassroom(classroomId);
     }
