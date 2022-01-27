@@ -61,7 +61,4 @@ public class ClassroomModel {
         this.studentList = studentList;
     }
 
-    public boolean isPresent() {
-        return false;
-    }
 }

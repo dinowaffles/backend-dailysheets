@@ -57,7 +57,7 @@ public class ClassroomService {
     }
 
     // DEL delete a classroom
-    public ResponseEntity<Map<String, Boolean>>  deleteClassroom(Long classroomId) {
+    public ResponseEntity<Map<String, Boolean>> deleteClassroom(Long classroomId) {
         LOGGER.info("service calling deleteClassroom");
         ClassroomModel classroomModel = classroomRepository.findById(classroomId)
                 .orElseThrow(() -> new InfoNotFoundException("Classroom with id "
