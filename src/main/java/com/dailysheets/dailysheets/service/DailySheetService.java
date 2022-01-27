@@ -23,16 +23,30 @@ public class DailySheetService {
 
 
     // GET a single daily sheet
-    public ResponseEntity<DailySheetModel> getDailySheet(Long studentId, Long sheetId) {
+    public ResponseEntity<DailySheetModel> getDailySheet(Long sheetId) {
         LOGGER.info("service calling getDailySheet");
-        DailySheetModel dailySheetModel = dailySheetRepository
-                .findByIdAndStudentId(DailySheetModel.getStudent().getId(), sheetId);
+        DailySheetModel dailySheetModel = dailySheetRepository.findById(sheetId)
+                .orElseThrow(() -> new InfoNotFoundException("Daily sheet with id "
+                        + sheetId + "not found."));
         return ResponseEntity.ok(dailySheetModel);
     }
 
     // POST create a daily sheet
-
+    public DailySheetModel createDailySheet(DailySheetModel dailySheetObject) {
+        LOGGER.info("service calling createDailySheet");
+        return dailySheetRepository.save(dailySheetObject);
+    }
 
     // PUT update a daily sheet
+    public ResponseEntity<DailySheetModel> updateDailySheet (
+            Long sheetId, DailySheetModel dailySheetObject) {
+        LOGGER.info("service calling updateDailySheet");
+        DailySheetModel dailySheetModel = dailySheetRepository.findById(sheetId)
+                .orElseThrow(() -> new InfoNotFoundException("Daily sheet with id "
+                        + sheetId + "not found."));
+        dailySheetModel.setStudentModel(dailySheetObject.getStudentModel());
+        DailySheetModel updateDailySheet = dailySheetRepository.save(dailySheetModel);
+        return ResponseEntity.ok(updateDailySheet);
+    }
 
 }
