@@ -7,9 +7,9 @@ To create an electronic daily sheet system to facilitate data exchange between p
 
 | Method | Endpoint                                         | Description        | Request Body |   |
 |--------|--------------------------------------------------|--------------------|--------------|---|
-| GET    | /api/student/{studentId}                         | view a child       | none         |   |
-| POST   | /api/classroom/{classroomId}/student/{studentId} | create a child's dailysheet   | student info |   |
-| PUT    | /api/classroom/{classroomId}/student/{studentId} | update a child's dailysheet   | student info |   |
+| GET    | /api/student/{studentId}/sheet/{sheetId}         | view a child's dailysheet     | none         |   |
+| POST   | /api/student/{studentId}/sheet                   | create a child's dailysheet   | student info |   |
+| PUT    | /api/student/{studentId}/sheet/{sheetId}         | update a child's dailysheet   | student info |   |
 | GET    | /api/student                                     | get all students   | none         |   |
 | POST   | /api/student                                     | create a student   | student info |   |
 | PUT    | /api/student/{studentId}                         | update a student   | student info |   |
@@ -20,5 +20,11 @@ To create an electronic daily sheet system to facilitate data exchange between p
 | DEL    | /api/classroom/{classroomId}                     | delete a classroom | none         |   |
 
 ## Technology Used
+- Java
+- Spring Boot
+- Maven
+- PostgreSQL
+- PgAdmin
+- Postman
 
 ## Installation
