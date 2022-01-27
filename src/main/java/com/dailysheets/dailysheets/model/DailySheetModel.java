@@ -16,7 +16,7 @@ public class DailySheetModel {
      @JsonIgnore
      @ManyToOne
      @JoinColumn(name = "student_id")
-    private StudentModel studentModel;
+    private static StudentModel studentModel;
 
     @Column
     private String date;
@@ -484,5 +484,9 @@ public class DailySheetModel {
 
     public void setNeeds(String needs) {
         this.needs = needs;
+    }
+
+    public static StudentModel getStudent() {
+        return studentModel;
     }
 }
