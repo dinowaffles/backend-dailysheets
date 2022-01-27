@@ -60,4 +60,8 @@ public class ClassroomModel {
     public void setStudentList(List<StudentModel> studentList) {
         this.studentList = studentList;
     }
+
+    public boolean isPresent() {
+        return false;
+    }
 }
