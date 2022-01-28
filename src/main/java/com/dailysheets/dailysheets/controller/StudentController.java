@@ -1,6 +1,5 @@
 package com.dailysheets.dailysheets.controller;
 
-import com.dailysheets.dailysheets.model.DailySheetModel;
 import com.dailysheets.dailysheets.model.StudentModel;
 import com.dailysheets.dailysheets.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;

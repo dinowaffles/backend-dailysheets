@@ -13,19 +13,20 @@ import java.util.List;
 public class StudentModel {
 
     @Id
-    @Column(name = "student_id")
+    @Column
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "student_name")
+    @Column
     private String name;
 
-    @JsonIgnore
+
     @ManyToOne
-    @JoinColumn(name = "category_id")
+    @JoinColumn(name = "classroommodel_id")
+    @JsonIgnore
     private ClassroomModel classroomModel;
 
-    @OneToMany(mappedBy = "student", orphanRemoval = false)
+    @OneToMany(mappedBy = "studentList", orphanRemoval = false)
     @LazyCollection(LazyCollectionOption.FALSE)
     private List<DailySheetModel> dailySheetModelList;
 

@@ -9,13 +9,14 @@ import javax.persistence.*;
 public class DailySheetModel {
 
     @Id
-    @Column(name = "dailysheet_id")
+    @Column
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-     @JsonIgnore
+
      @ManyToOne
-     @JoinColumn(name = "student_id")
+     @JoinColumn(name = "studentmodel_id")
+     @JsonIgnore
     private static StudentModel studentModel;
 
     @Column
@@ -486,7 +487,4 @@ public class DailySheetModel {
         this.needs = needs;
     }
 
-    public static StudentModel getStudent() {
-        return studentModel;
-    }
 }

@@ -11,17 +11,17 @@ import java.util.List;
 public class ClassroomModel {
 
     @Id
-    @Column(name = "classroom_id")
+    @Column
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "classroom_name")
+    @Column
     private String name;
 
-    @Column(name = "classroom_age")
+    @Column
     private String ageGroup;
 
-    @OneToMany(mappedBy = "classrooms", orphanRemoval = false)
+    @OneToMany(mappedBy = "classroomModel", orphanRemoval = false)
     @LazyCollection(LazyCollectionOption.FALSE)
     private List<StudentModel> studentList;
 
