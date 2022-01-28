@@ -22,11 +22,12 @@ public class StudentModel {
 
 
     @ManyToOne
-    @JoinColumn(name = "classroommodel_id")
+    @JoinColumn(name = "classroom_id")
     @JsonIgnore
     private ClassroomModel classroomModel;
 
-    @OneToMany(mappedBy = "studentList", orphanRemoval = false)
+
+    @OneToMany(mappedBy = "studentModel", orphanRemoval = false)
     @LazyCollection(LazyCollectionOption.FALSE)
     private List<DailySheetModel> dailySheetModelList;
 
@@ -55,5 +56,13 @@ public class StudentModel {
 
     public void setClassroomModel(ClassroomModel classroomModel) {
         this.classroomModel = classroomModel;
+    }
+
+    public List<DailySheetModel> getDailySheetModelList() {
+        return dailySheetModelList;
+    }
+
+    public void setDailySheetModelList(List<DailySheetModel> dailySheetModelList) {
+        this.dailySheetModelList = dailySheetModelList;
     }
 }

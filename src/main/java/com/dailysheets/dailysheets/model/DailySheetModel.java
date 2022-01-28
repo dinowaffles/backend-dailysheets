@@ -15,9 +15,9 @@ public class DailySheetModel {
 
 
      @ManyToOne
-     @JoinColumn(name = "studentmodel_id")
+     @JoinColumn(name = "student_id")
      @JsonIgnore
-    private static StudentModel studentModel;
+    private StudentModel studentModel;
 
     @Column
     private String date;

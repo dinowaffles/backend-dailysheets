@@ -5,5 +5,4 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface StudentRepository extends JpaRepository<StudentModel, Long> {
     StudentModel findByName(String name);
-    StudentModel findByIdAndStudentId(Long sheetId, Long studentId);
 }
