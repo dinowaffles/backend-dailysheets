@@ -7,9 +7,9 @@ To create an electronic daily sheet system to facilitate data exchange between p
 
 | Method | Endpoint                                         | Description        | Request Body |   |
 |--------|--------------------------------------------------|--------------------|--------------|---|
-| GET    | /api/student/{studentId}/sheet/{sheetId}         | view a child's dailysheet     | none         |   |
-| POST   | /api/student/{studentId}/sheet                   | create a child's dailysheet   | student info |   |
-| PUT    | /api/student/{studentId}/sheet/{sheetId}         | update a child's dailysheet   | student info |   |
+| GET    | /api/sheet/{sheetId}                             | view a child's dailysheet | none  |   |
+| POST   | /api/sheet                                       | create a child's dailysheet | student info |   |
+| PUT    | /api//sheet/{sheetId}                            | update a child's dailysheet | student info |   |
 | GET    | /api/student                                     | get all students   | none         |   |
 | POST   | /api/student                                     | create a student   | student info |   |
 | PUT    | /api/student/{studentId}                         | update a student   | student info |   |
