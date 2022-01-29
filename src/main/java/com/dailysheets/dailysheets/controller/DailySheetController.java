@@ -25,7 +25,7 @@ public class DailySheetController {
     }
 
     // GET a single daily sheet
-    @RequestMapping("/sheet{sheetId}")
+    @RequestMapping("/sheet/{sheetId}")
     public ResponseEntity<DailySheetModel> getDailySheet(@PathVariable Long sheetId) {
         LOGGER.info("controller calling getDailySheet");
         return dailySheetService.getDailySheet(sheetId);

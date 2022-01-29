@@ -61,6 +61,12 @@ public class StudentService {
             return ResponseEntity.ok(updateStudent);
     }
 
+    // PUT update a student's classroom
+//    public ResponseEntity<StudentModel> updateStudentClassroom (Long studentId, Long classroomId) {
+//        LOGGER.info("service calling updateStudent");
+//
+//    }
+
     // DEL delete a student
     public ResponseEntity<Map<String, Boolean>> deleteStudent(Long studentId) {
         LOGGER.info("service calling deleteStudent");

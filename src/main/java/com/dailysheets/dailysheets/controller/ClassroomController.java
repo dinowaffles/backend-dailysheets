@@ -39,7 +39,7 @@ public class ClassroomController {
     }
 
     // PUT update a classroom
-    @PutMapping("/classroom/{classroomId}")
+    @PatchMapping("/classroom/{classroomId}")
     public ResponseEntity<ClassroomModel> updateClassroom(
             @PathVariable Long classroomId, @RequestBody ClassroomModel classroomObject) {
         LOGGER.info("controller calling updateClassroom");
