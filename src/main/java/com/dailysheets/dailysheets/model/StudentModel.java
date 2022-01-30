@@ -1,6 +1,4 @@
 package com.dailysheets.dailysheets.model;
-
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
@@ -20,12 +18,8 @@ public class StudentModel {
     @Column
     private String name;
 
-
-    @ManyToOne
-    @JoinColumn(name = "classroom_id")
-    @JsonIgnore
-    private ClassroomModel classroomModel;
-
+    @Column
+    private String classroom;
 
     @OneToMany(mappedBy = "studentModel", orphanRemoval = false)
     @LazyCollection(LazyCollectionOption.FALSE)
@@ -50,19 +44,19 @@ public class StudentModel {
         this.name = name;
     }
 
-    public ClassroomModel getClassroomModel() {
-        return classroomModel;
-    }
-
-    public void setClassroomModel(ClassroomModel classroomModel) {
-        this.classroomModel = classroomModel;
-    }
-
     public List<DailySheetModel> getDailySheetModelList() {
         return dailySheetModelList;
     }
 
     public void setDailySheetModelList(List<DailySheetModel> dailySheetModelList) {
         this.dailySheetModelList = dailySheetModelList;
+    }
+
+    public String getClassroom() {
+        return classroom;
+    }
+
+    public void setClassroom(String classroom) {
+        this.classroom = classroom;
     }
 }

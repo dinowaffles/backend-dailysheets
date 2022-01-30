@@ -2,9 +2,7 @@ package com.dailysheets.dailysheets.service;
 
 import com.dailysheets.dailysheets.exception.InfoExistsException;
 import com.dailysheets.dailysheets.exception.InfoNotFoundException;
-import com.dailysheets.dailysheets.model.DailySheetModel;
 import com.dailysheets.dailysheets.model.StudentModel;
-import com.dailysheets.dailysheets.repository.DailySheetRepository;
 import com.dailysheets.dailysheets.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -13,7 +11,6 @@ import org.springframework.stereotype.Service;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 import java.util.logging.Logger;
 
 @Service
@@ -27,7 +24,6 @@ public class StudentService {
     public void setStudentRepository(StudentRepository studentRepository) {
         this.studentRepository = studentRepository;
     }
-
 
     // GET all students
     public List<StudentModel> getStudents() {
@@ -56,16 +52,10 @@ public class StudentService {
                 .orElseThrow(() -> new InfoNotFoundException("Student with id "
                         + studentId + "not found."));
             studentModel.setName(studentObject.getName());
-            studentModel.setClassroomModel(studentObject.getClassroomModel());
+            studentModel.setClassroom(studentObject.getClassroom());
             StudentModel updateStudent = studentRepository.save(studentModel);
             return ResponseEntity.ok(updateStudent);
     }
-
-    // PUT update a student's classroom
-//    public ResponseEntity<StudentModel> updateStudentClassroom (Long studentId, Long classroomId) {
-//        LOGGER.info("service calling updateStudent");
-//
-//    }
 
     // DEL delete a student
     public ResponseEntity<Map<String, Boolean>> deleteStudent(Long studentId) {

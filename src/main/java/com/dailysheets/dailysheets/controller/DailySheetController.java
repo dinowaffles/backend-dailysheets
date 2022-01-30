@@ -39,7 +39,7 @@ public class DailySheetController {
     }
 
     // PUT update a daily sheet
-    @PutMapping("/sheet/{sheetId}")
+    @PatchMapping("/sheet/{sheetId}")
     public ResponseEntity<DailySheetModel> updateDailySheet (
             @PathVariable Long sheetId, @RequestBody DailySheetModel dailySheetObject) {
         LOGGER.info("service calling updateDailySheet");

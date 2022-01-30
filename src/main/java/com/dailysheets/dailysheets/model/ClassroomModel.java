@@ -21,10 +21,6 @@ public class ClassroomModel {
     @Column
     private String ageGroup;
 
-    @OneToMany(mappedBy = "classroomModel", orphanRemoval = false)
-    @LazyCollection(LazyCollectionOption.FALSE)
-    private List<StudentModel> studentList;
-
     public ClassroomModel() {
 
     }
@@ -51,14 +47,6 @@ public class ClassroomModel {
 
     public void setAgeGroup(String ageGroup) {
         this.ageGroup = ageGroup;
-    }
-
-    public List<StudentModel> getStudentList() {
-        return studentList;
-    }
-
-    public void setStudentList(List<StudentModel> studentList) {
-        this.studentList = studentList;
     }
 
 }
