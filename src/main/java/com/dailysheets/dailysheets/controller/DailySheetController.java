@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.logging.Logger;
 
 @CrossOrigin(origins = "http://localhost:4200")
@@ -22,6 +23,13 @@ public class DailySheetController {
     @Autowired
     public void setDailySheetService(DailySheetService dailySheetService) {
         this.dailySheetService = dailySheetService;
+    }
+
+    // GET all daily sheets
+    @GetMapping("/sheet")
+    public List<DailySheetModel> getDailySheets() {
+        LOGGER.info("controller calling getDailySheets");
+        return dailySheetService.getDailySheets();
     }
 
     // GET a single daily sheet

@@ -13,6 +13,11 @@ public class DailySheetModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column
+    private String studentName;
+
+    @Column
+    private String classroom;
 
      @ManyToOne
      @JoinColumn(name = "student_id")
@@ -49,31 +54,6 @@ public class DailySheetModel {
     private String lunchAmt;
     @Column
     private String snackAmt;
-
-    @Column
-    private String diaper1Time;
-    @Column
-    private String diaper1Description;
-    @Column
-    private String diaper2Time;
-    @Column
-    private String diaper2Description;
-    @Column
-    private String diaper3Time;
-    @Column
-    private String diaper3Description;
-    @Column
-    private String diaper4Time;
-    @Column
-    private String diaper4Description;
-    @Column
-    private String diaper5Time;
-    @Column
-    private String diaper5Description;
-    @Column
-    private String diaper6Time;
-    @Column
-    private String diaper6Description;
 
     @Column
     private String potty1Time;
@@ -125,6 +105,22 @@ public class DailySheetModel {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getStudentName() {
+        return studentName;
+    }
+
+    public void setStudentName(String studentName) {
+        this.studentName = studentName;
+    }
+
+    public String getClassroom() {
+        return classroom;
+    }
+
+    public void setClassroom(String classroom) {
+        this.classroom = classroom;
     }
 
     public StudentModel getStudentModel() {
@@ -245,102 +241,6 @@ public class DailySheetModel {
 
     public void setSnackAmt(String snackAmt) {
         this.snackAmt = snackAmt;
-    }
-
-    public String getDiaper1Time() {
-        return diaper1Time;
-    }
-
-    public void setDiaper1Time(String diaper1Time) {
-        this.diaper1Time = diaper1Time;
-    }
-
-    public String getDiaper1Description() {
-        return diaper1Description;
-    }
-
-    public void setDiaper1Description(String diaper1Description) {
-        this.diaper1Description = diaper1Description;
-    }
-
-    public String getDiaper2Time() {
-        return diaper2Time;
-    }
-
-    public void setDiaper2Time(String diaper2Time) {
-        this.diaper2Time = diaper2Time;
-    }
-
-    public String getDiaper2Description() {
-        return diaper2Description;
-    }
-
-    public void setDiaper2Description(String diaper2Description) {
-        this.diaper2Description = diaper2Description;
-    }
-
-    public String getDiaper3Time() {
-        return diaper3Time;
-    }
-
-    public void setDiaper3Time(String diaper3Time) {
-        this.diaper3Time = diaper3Time;
-    }
-
-    public String getDiaper3Description() {
-        return diaper3Description;
-    }
-
-    public void setDiaper3Description(String diaper3Description) {
-        this.diaper3Description = diaper3Description;
-    }
-
-    public String getDiaper4Time() {
-        return diaper4Time;
-    }
-
-    public void setDiaper4Time(String diaper4Time) {
-        this.diaper4Time = diaper4Time;
-    }
-
-    public String getDiaper4Description() {
-        return diaper4Description;
-    }
-
-    public void setDiaper4Description(String diaper4Description) {
-        this.diaper4Description = diaper4Description;
-    }
-
-    public String getDiaper5Time() {
-        return diaper5Time;
-    }
-
-    public void setDiaper5Time(String diaper5Time) {
-        this.diaper5Time = diaper5Time;
-    }
-
-    public String getDiaper5Description() {
-        return diaper5Description;
-    }
-
-    public void setDiaper5Description(String diaper5Description) {
-        this.diaper5Description = diaper5Description;
-    }
-
-    public String getDiaper6Time() {
-        return diaper6Time;
-    }
-
-    public void setDiaper6Time(String diaper6Time) {
-        this.diaper6Time = diaper6Time;
-    }
-
-    public String getDiaper6Description() {
-        return diaper6Description;
-    }
-
-    public void setDiaper6Description(String diaper6Description) {
-        this.diaper6Description = diaper6Description;
     }
 
     public String getPotty1Time() {

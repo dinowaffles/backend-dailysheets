@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.logging.Logger;
 
 @Service
@@ -21,6 +22,11 @@ public class DailySheetService {
         this.dailySheetRepository = dailySheetRepository;
     }
 
+    // GET all daily sheets
+    public List<DailySheetModel> getDailySheets() {
+        LOGGER.info("service calling getDailySheets");
+        return dailySheetRepository.findAll();
+    }
 
     // GET a single daily sheet
     public ResponseEntity<DailySheetModel> getDailySheet(Long sheetId) {
@@ -44,6 +50,8 @@ public class DailySheetService {
         DailySheetModel dailySheetModel = dailySheetRepository.findById(sheetId)
                 .orElseThrow(() -> new InfoNotFoundException("Daily sheet with id "
                         + sheetId + "not found."));
+        dailySheetModel.setStudentName(dailySheetObject.getStudentName());
+        dailySheetModel.setClassroom(dailySheetObject.getClassroom());
         dailySheetModel.setStudentModel(dailySheetObject.getStudentModel());
         dailySheetModel.setDate(dailySheetObject.getDate());
         dailySheetModel.setFeeding1Time(dailySheetObject.getFeeding1Time());
@@ -59,18 +67,6 @@ public class DailySheetService {
         dailySheetModel.setBreakfastAmt(dailySheetObject.getBreakfastAmt());
         dailySheetModel.setLunchAmt(dailySheetObject.getLunchAmt());
         dailySheetModel.setSnackAmt(dailySheetObject.getSnackAmt());
-        dailySheetModel.setDiaper1Time(dailySheetObject.getDiaper1Time());
-        dailySheetModel.setDiaper1Description(dailySheetObject.getDiaper1Description());
-        dailySheetModel.setDiaper2Time(dailySheetObject.getDiaper2Time());
-        dailySheetModel.setDiaper2Description(dailySheetObject.getDiaper2Description());
-        dailySheetModel.setDiaper3Time(dailySheetObject.getDiaper3Time());
-        dailySheetModel.setDiaper3Description(dailySheetObject.getDiaper3Description());
-        dailySheetModel.setDiaper4Time(dailySheetObject.getDiaper4Time());
-        dailySheetModel.setDiaper4Description(dailySheetObject.getDiaper4Description());
-        dailySheetModel.setDiaper5Time(dailySheetObject.getDiaper5Time());
-        dailySheetModel.setDiaper5Description(dailySheetObject.getDiaper5Description());
-        dailySheetModel.setDiaper6Time(dailySheetObject.getDiaper6Time());
-        dailySheetModel.setDiaper6Description(dailySheetObject.getDiaper6Description());
         dailySheetModel.setPotty1Time(dailySheetObject.getPotty1Time());
         dailySheetModel.setPotty1Description(dailySheetObject.getPotty1Description());
         dailySheetModel.setPotty2Time(dailySheetObject.getPotty2Time());
@@ -87,7 +83,7 @@ public class DailySheetService {
         dailySheetModel.setNap2End(dailySheetObject.getNap2End());
         dailySheetModel.setActivity(dailySheetObject.getActivity());
         dailySheetModel.setNeeds(dailySheetObject.getNeeds());
-        DailySheetModel updateDailySheet = dailySheetRepository.save(dailySheetModel);
+        DailySheetModel updateDailySheet = dailySheetRepository.save(dailySheetObject);
         return ResponseEntity.ok(updateDailySheet);
     }
 
