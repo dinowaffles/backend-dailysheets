@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Logger;
 
 @CrossOrigin(origins = "http://localhost:4200")
@@ -57,5 +58,13 @@ public class DailySheetController {
             @PathVariable Long sheetId, @RequestBody DailySheetModel dailySheetObject) {
         LOGGER.info("service calling updateDailySheet");
         return dailySheetService.updateDailySheet(sheetId, dailySheetObject);
+    }
+
+    // DEL delete a dailysheet
+    @DeleteMapping("/sheet/{sheetId}")
+    @ResponseStatus(value=HttpStatus.OK)
+    public ResponseEntity<Map<String, Boolean>> deleteDailySheet(@PathVariable Long sheetId) {
+        LOGGER.info("controller calling deleteDailySheet");
+        return dailySheetService.deleteDailySheet(sheetId);
     }
 }

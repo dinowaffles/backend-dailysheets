@@ -2,13 +2,16 @@ package com.dailysheets.dailysheets.service;
 
 import com.dailysheets.dailysheets.exception.InfoNotFoundException;
 import com.dailysheets.dailysheets.model.DailySheetModel;
+import com.dailysheets.dailysheets.model.StudentModel;
 import com.dailysheets.dailysheets.repository.DailySheetRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Logger;
 
 @Service
@@ -85,6 +88,18 @@ public class DailySheetService {
         dailySheetModel.setNeeds(dailySheetObject.getNeeds());
         DailySheetModel updateDailySheet = dailySheetRepository.save(dailySheetObject);
         return ResponseEntity.ok(updateDailySheet);
+    }
+
+    // DEL delete a dailysheet
+    public ResponseEntity<Map<String, Boolean>> deleteDailySheet(Long sheetId) {
+        LOGGER.info("service calling deleteDailySheet");
+        DailySheetModel dailySheetModel = dailySheetRepository.findById(sheetId)
+                .orElseThrow(() -> new InfoNotFoundException("Daily sheet with id "
+                        + sheetId + "not found."));
+        dailySheetRepository.delete(dailySheetModel);
+        Map<String, Boolean> response = new HashMap<>();
+        response.put("deleted", Boolean.TRUE);
+        return ResponseEntity.ok(response);
     }
 
 }
