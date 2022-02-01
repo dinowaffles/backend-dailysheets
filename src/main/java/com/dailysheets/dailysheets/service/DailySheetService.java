@@ -12,6 +12,7 @@ import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.logging.Logger;
 
 @Service
@@ -46,9 +47,9 @@ public class DailySheetService {
         return dailySheetRepository.save(dailySheetObject);
     }
 
-    // PUT update a daily sheet
+    // PATCH update a daily sheet
     public ResponseEntity<DailySheetModel> updateDailySheet (
-            Long sheetId, DailySheetModel dailySheetObject) {
+            DailySheetModel dailySheetObject, Long sheetId) {
         LOGGER.info("service calling updateDailySheet");
         DailySheetModel dailySheetModel = dailySheetRepository.findById(sheetId)
                 .orElseThrow(() -> new InfoNotFoundException("Daily sheet with id "
@@ -86,7 +87,7 @@ public class DailySheetService {
         dailySheetModel.setNap2End(dailySheetObject.getNap2End());
         dailySheetModel.setActivity(dailySheetObject.getActivity());
         dailySheetModel.setNeeds(dailySheetObject.getNeeds());
-        DailySheetModel updateDailySheet = dailySheetRepository.save(dailySheetObject);
+        DailySheetModel updateDailySheet = dailySheetRepository.save(dailySheetModel);
         return ResponseEntity.ok(updateDailySheet);
     }
 

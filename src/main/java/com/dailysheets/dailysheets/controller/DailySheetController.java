@@ -51,13 +51,13 @@ public class DailySheetController {
         return dailySheetService.createDailySheet(dailySheetObject);
     }
 
-    // PUT update a daily sheet
+    // PATCH update a daily sheet
     @PatchMapping("/sheet/{sheetId}")
     @ResponseStatus(value=HttpStatus.OK)
     public ResponseEntity<DailySheetModel> updateDailySheet (
-            @PathVariable Long sheetId, @RequestBody DailySheetModel dailySheetObject) {
+            @RequestBody DailySheetModel dailySheetObject, @PathVariable(value="sheetId") Long sheetId) {
         LOGGER.info("service calling updateDailySheet");
-        return dailySheetService.updateDailySheet(sheetId, dailySheetObject);
+        return dailySheetService.updateDailySheet(dailySheetObject, sheetId);
     }
 
     // DEL delete a dailysheet
