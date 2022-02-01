@@ -1,8 +1,10 @@
 package com.dailysheets.dailysheets.controller;
 
+import com.dailysheets.dailysheets.exception.InfoNotFoundException;
 import com.dailysheets.dailysheets.model.StudentModel;
 import com.dailysheets.dailysheets.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,13 +28,23 @@ public class StudentController {
 
     // GET all students
     @GetMapping("/student")
+    @ResponseStatus(value= HttpStatus.OK)
     public List<StudentModel> getStudents() {
         LOGGER.info("controller calling getStudents");
         return studentService.getStudents();
     }
 
+    // GET a classroom
+    @GetMapping("/student/{studentId}")
+    @ResponseStatus(value= HttpStatus.OK)
+    public ResponseEntity<StudentModel> getStudentById(@PathVariable Long studentId) {
+        LOGGER.info("controller calling getStudentById");
+        return studentService.getStudentById(studentId);
+    }
+
     // POST create a student
     @PostMapping("/student")
+    @ResponseStatus(value=HttpStatus.OK)
     public StudentModel addStudent(@RequestBody StudentModel studentObject) {
         LOGGER.info("controller calling addStudent");
         return studentService.addStudent(studentObject);
@@ -40,6 +52,7 @@ public class StudentController {
 
     // PUT update a student
     @PutMapping("/student/{studentId}")
+    @ResponseStatus(value=HttpStatus.OK)
     public ResponseEntity<StudentModel> updateStudent(
             @PathVariable Long studentId, @RequestBody StudentModel studentObject) {
         LOGGER.info("controller calling updateStudent");
@@ -48,6 +61,7 @@ public class StudentController {
 
     // DEL delete a student
     @DeleteMapping("/student/{studentId}")
+    @ResponseStatus(value=HttpStatus.OK)
     public ResponseEntity<Map<String, Boolean>> deleteStudent(@PathVariable Long studentId) {
         LOGGER.info("controller calling deleteStudent");
         return studentService.deleteStudent(studentId);

@@ -2,6 +2,7 @@ package com.dailysheets.dailysheets.service;
 
 import com.dailysheets.dailysheets.exception.InfoExistsException;
 import com.dailysheets.dailysheets.exception.InfoNotFoundException;
+import com.dailysheets.dailysheets.model.ClassroomModel;
 import com.dailysheets.dailysheets.model.StudentModel;
 import com.dailysheets.dailysheets.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +30,15 @@ public class StudentService {
     public List<StudentModel> getStudents() {
         LOGGER.info("service calling getStudents");
         return studentRepository.findAll();
+    }
+
+    // GET a classroom
+    public ResponseEntity<StudentModel> getStudentById(Long studentId) {
+        LOGGER.info("service calling getStudentById");
+        StudentModel studentModel = studentRepository.findById(studentId)
+                .orElseThrow(() -> new InfoNotFoundException("Student with id "
+                        + studentId + "not found."));
+        return ResponseEntity.ok(studentModel);
     }
 
     // POST create a student

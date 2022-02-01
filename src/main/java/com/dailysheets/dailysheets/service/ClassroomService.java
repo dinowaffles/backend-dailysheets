@@ -30,6 +30,15 @@ public class ClassroomService {
         return classroomRepository.findAll();
     }
 
+    // GET a classroom
+    public ResponseEntity<ClassroomModel> getClassroomById(Long classroomId) {
+        LOGGER.info("service calling getClassroomById");
+        ClassroomModel classroomModel = classroomRepository.findById(classroomId)
+                .orElseThrow(() -> new InfoNotFoundException("Classroom with id "
+                        + classroomId + "not found."));
+        return ResponseEntity.ok(classroomModel);
+    }
+
     // POST create a classroom
     public ClassroomModel addClassroom(ClassroomModel classroomObject) {
         LOGGER.info("service calling addClassroom");

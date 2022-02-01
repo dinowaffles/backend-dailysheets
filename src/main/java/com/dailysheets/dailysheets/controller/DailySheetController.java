@@ -4,6 +4,7 @@ import com.dailysheets.dailysheets.exception.InfoNotFoundException;
 import com.dailysheets.dailysheets.model.DailySheetModel;
 import com.dailysheets.dailysheets.service.DailySheetService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,6 +28,7 @@ public class DailySheetController {
 
     // GET all daily sheets
     @GetMapping("/sheet")
+    @ResponseStatus(value= HttpStatus.OK)
     public List<DailySheetModel> getDailySheets() {
         LOGGER.info("controller calling getDailySheets");
         return dailySheetService.getDailySheets();
@@ -34,6 +36,7 @@ public class DailySheetController {
 
     // GET a single daily sheet
     @RequestMapping("/sheet/{sheetId}")
+    @ResponseStatus(value=HttpStatus.OK)
     public ResponseEntity<DailySheetModel> getDailySheet(@PathVariable Long sheetId) {
         LOGGER.info("controller calling getDailySheet");
         return dailySheetService.getDailySheet(sheetId);
@@ -41,6 +44,7 @@ public class DailySheetController {
 
     // POST create a daily sheet
     @PostMapping("/sheet")
+    @ResponseStatus(value=HttpStatus.OK)
     public DailySheetModel createDailySheet(@RequestBody DailySheetModel dailySheetObject) {
         LOGGER.info("controller calling createDailySheet");
         return dailySheetService.createDailySheet(dailySheetObject);
@@ -48,6 +52,7 @@ public class DailySheetController {
 
     // PUT update a daily sheet
     @PatchMapping("/sheet/{sheetId}")
+    @ResponseStatus(value=HttpStatus.OK)
     public ResponseEntity<DailySheetModel> updateDailySheet (
             @PathVariable Long sheetId, @RequestBody DailySheetModel dailySheetObject) {
         LOGGER.info("service calling updateDailySheet");
