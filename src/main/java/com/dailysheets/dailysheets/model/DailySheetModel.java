@@ -1,10 +1,14 @@
 package com.dailysheets.dailysheets.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.DynamicUpdate;
+import org.hibernate.annotations.SelectBeforeUpdate;
 
 import javax.persistence.*;
 
 @Entity
+@DynamicUpdate(value = true)
+@SelectBeforeUpdate(value = true)
 @Table(name = "dailysheet")
 public class DailySheetModel {
 
