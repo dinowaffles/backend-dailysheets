@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
 
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "https://frontend-dailysheets.herokuapp.com/")
 @RestController
 @RequestMapping(path = "/api")
 public class ClassroomController {
